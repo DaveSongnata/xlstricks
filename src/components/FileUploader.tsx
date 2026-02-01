@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Upload, LockOpen } from 'lucide-react';
 import { ProcessingStatus } from '../types';
 import { ARIA_LABELS, UI_CONSTANTS } from '../constants/ui';
@@ -9,6 +10,7 @@ interface FileUploaderProps {
 }
 
 export function FileUploader({ onFileSelect, status }: FileUploaderProps) {
+  const { t } = useTranslation();
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -99,16 +101,16 @@ export function FileUploader({ onFileSelect, status }: FileUploaderProps) {
 
         <div className="text-center space-y-2">
           <h3 className="text-xl font-semibold font-mono text-vault-cyan">
-            {isDragging ? 'Solte o arquivo aqui' : 'Arraste seu .xlsx aqui'}
+            {isDragging ? t('uploader.dragging') : t('uploader.title')}
           </h3>
           <p className="text-vault-muted text-sm">
-            ou <span className="text-vault-cyan underline">clique para selecionar</span>
+            {t('uploader.subtitle')}
           </p>
         </div>
 
         <div className="flex items-center gap-2 text-xs text-vault-muted font-mono">
           <span className="w-2 h-2 rounded-full bg-vault-success animate-pulse" />
-          Máximo {UI_CONSTANTS.MAX_FILE_SIZE_MB}MB • Apenas .xlsx
+          Máximo {UI_CONSTANTS.MAX_FILE_SIZE_MB}MB • .xlsx
         </div>
       </div>
 

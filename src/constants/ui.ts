@@ -24,4 +24,6 @@ export const ARIA_LABELS = {
   CLOSE_NOTIFICATION: 'Fechar notificação',
   FILE_INPUT: 'Selecionar arquivo Excel',
   LOGO: 'Logo XLSTRICKS',
+  MODE_TOGGLE: 'Alternar modo de processamento',
+  LANGUAGE_TOGGLE: 'Alternar idioma',
 } as const;

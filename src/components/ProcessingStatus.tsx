@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Loader2, Check, X } from 'lucide-react';
 import { ProcessingState } from '../types';
 import { ARIA_LABELS, UI_CONSTANTS } from '../constants/ui';
@@ -8,6 +9,8 @@ interface ProcessingStatusProps {
 }
 
 export function ProcessingStatus({ state, onDismiss }: ProcessingStatusProps) {
+  const { t } = useTranslation();
+
   if (state.status === 'idle' || state.status === 'dragging') {
     return null;
   }
@@ -19,8 +22,8 @@ export function ProcessingStatus({ state, onDismiss }: ProcessingStatusProps) {
           <Loader2 className="text-vault-cyan animate-spin" size={UI_CONSTANTS.ICON_SIZES.XL} strokeWidth={2} />
         </div>
       ),
-      title: 'Processando...',
-      description: 'Removendo proteções da planilha',
+      title: t('status.processing'),
+      description: t('status.removingProtection'),
       bgClass: 'glass-panel',
       glowClass: 'glow-cyan',
     },
@@ -30,8 +33,8 @@ export function ProcessingStatus({ state, onDismiss }: ProcessingStatusProps) {
           <Check className="text-vault-success" size={UI_CONSTANTS.ICON_SIZES.LG} strokeWidth={2.5} />
         </div>
       ),
-      title: 'Sucesso!',
-      description: state.message || 'Download iniciado',
+      title: t('status.success'),
+      description: state.message || t('status.downloadStarted'),
       bgClass: 'glass-panel border-vault-success/30',
       glowClass: 'glow-success',
     },
@@ -41,8 +44,8 @@ export function ProcessingStatus({ state, onDismiss }: ProcessingStatusProps) {
           <X className="text-vault-error" size={UI_CONSTANTS.ICON_SIZES.LG} strokeWidth={2.5} />
         </div>
       ),
-      title: 'Erro',
-      description: state.message || 'Não foi possível processar o arquivo',
+      title: t('status.error'),
+      description: state.message || t('status.errorGeneric'),
       bgClass: 'glass-panel border-vault-error/30',
       glowClass: 'glow-error',
     },
