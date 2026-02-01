@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-vault-border;
+  }
+
+  body {
+    @apply bg-vault-bg text-vault-text font-sans antialiased;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 184, 0, 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    @apply bg-vault-cyan text-vault-bg;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-vault-surface/50 backdrop-blur-xl border border-vault-border/50;
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 30px rgba(0, 217, 255, 0.2);
+  }
+
+  .glow-success {
+    box-shadow: 0 0 30px rgba(0, 255, 133, 0.3);
+  }
+
+  .glow-error {
+    box-shadow: 0 0 30px rgba(255, 71, 87, 0.3);
+  }
+}
